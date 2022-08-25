@@ -84,19 +84,21 @@ export default function LotteryEntrance() {
             {/* <div className="py-3">Hi from lottery entrance!</div> */}
             {contractAddress
                 ? (<div className="py-3">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
-                        onClick={async () => {
+                    <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
+                        onClick={async () =>
                             await enterRaffle({
                                 onSuccess: handleSuccess,
                                 onError: (error) => console.log(error),
                             })
-                        }}
+                        }
                         disabled={isLoading || isFetching}
                     >
-                        {isLoading || isFetching
-                            ? (<div className="animate-spin spinner-border h-8 w-8 border-b-2 rounded-full"></div>)
-                            : (<div>Enter raffle</div>)
-                        }
+                        {isLoading || isFetching ? (
+                            <div className="animate-spin spinner-border h-8 w-8 border-b-2 rounded-full"></div>
+                        ) : (
+                            "Enter Raffle"
+                        )}
                     </button>
                     <div className="py-1">Entrance fee: {ethers.utils.formatEther(entranceFee)} ETH</div>
                     <div className="py-1">Number of players in raffle: {playerCount}</div>
